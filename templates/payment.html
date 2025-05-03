@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1.0">
+    <title>Payment - Movie Ticket Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .col {
+            flex: 1;
+            min-width: 300px;
+        }
+        .title {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .inputBox {
+            margin-bottom: 20px;
+        }
+        .inputBox label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+        .inputBox input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .inputBox input:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        .flex {
+            display: flex;
+            gap: 20px;
+        }
+        .flex .inputBox {
+            flex: 1;
+        }
+        .payment-methods {
+            margin: 20px 0;
+        }
+        .payment-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .payment-method input {
+            margin-right: 10px;
+        }
+        .qr-code {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .qr-code img {
+            max-width: 200px;
+            height: auto;
+        }
+        .confirmpayment {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .confirmpayment:hover {
+            background-color: #45a049;
+        }
+        .ticket-preview {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .ticket-preview h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .ticket-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .ticket-details p {
+            margin: 0;
+            color: #666;
+        }
+        .ticket-details strong {
+            color: #333;
+        }
+        .print-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: none;
+        }
+        .print-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form id="payment-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div class="row">
+                <div class="col">
+                    <h3 class="title">Billing Address</h3>
+    
+                    <!-- Full Name -->
+                    <div class="inputBox">
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" placeholder="Enter your full name" required>
+                    </div>
+    
+                    <!-- Email -->
+                    <div class="inputBox">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" placeholder="Enter email address" required>
+                    </div>
+    
+                    <!-- Phone Number -->
+                    <div class="inputBox">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" placeholder="Enter phone number" required>
+                    </div>
+                    
+                    
+    
+                    <!-- Address -->
+                    <!-- <div class="inputBox">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" placeholder="Enter address" required>
+                    </div> -->
+    
+                    <!-- City -->
+                    <div class="inputBox">
+                        <label for="city">City:</label>
+                        <input type="text" id="city" placeholder="Enter city" required>
+                    </div>
+    
+                    <!-- State -->
+                    <div class="flex">
+                        <div class="inputBox">
+                            <label for="state">State:</label>
+                            <input type="text" id="state" placeholder="Enter state" required>
+                        </div>
+    
+                        <!-- Zip Code -->
+                        <div class="inputBox">
+                            <label for="zip">Zip Code:</label>
+                            <input type="number" id="zip" placeholder="123 456" required>
+                        </div>
+                    </div>
+
+                    <div class="payment-methods">
+                        <h3>Payment Method</h3>
+                        <div class="payment-method">
+                            <input type="radio" id="upi" name="payment" value="upi" checked>
+                            <label for="upi">UPI Payment</label>
+                        </div>
+                        <div class="payment-method">
+                            <input type="radio" id="card" name="payment" value="card">
+                            <label for="card">Card Payment</label>
+                        </div>
+                    </div>
+
+                    <div class="qr-code">
+                        <img src="{{ url_for('static', filename='image/google-pay-qr.jpg') }}" alt="Google Pay QR Code" style="max-width: 300px; height: auto;">
+                        <p>Scan QR code to pay via Google Pay</p>
+                    </div>
+    
+                    <!-- Card Details -->
+                    <!-- <div class="inputBox">
+                        <label for="cardNum">Card Number:</label>
+                        <input type="text" id="cardNum" placeholder="Enter card number" required>
+                    </div> -->
+    
+                    <button type="button" class="confirmpayment" onclick="confirmPayment()">Confirm Payment</button>
+                </div>
+            </div>
+        </form>
+
+        <div id="ticket-preview" class="ticket-preview">
+            <h2>Ticket Details</h2>
+            <div class="ticket-details">
+                <p><strong>Movie:</strong> <span id="ticket-movie"></span></p>
+                <p><strong>Theater:</strong> <span id="ticket-theater"></span></p>
+                <p><strong>Date:</strong> <span id="ticket-date"></span></p>
+                <p><strong>Time:</strong> <span id="ticket-time"></span></p>
+                <p><strong>Seats:</strong> <span id="ticket-seats"></span></p>
+                <p><strong>Name:</strong> <span id="ticket-name"></span></p>
+                <p><strong>Email:</strong> <span id="ticket-email"></span></p>
+                <p><strong>Phone:</strong> <span id="ticket-phone"></span></p>
+            </div>
+            <button class="print-button" onclick="printTicket()">Print Ticket</button>
+        </div>
+    </div>
+    
+    <script>
+        // Get booking details from session storage
+        const bookingDetails = JSON.parse(sessionStorage.getItem('bookingDetails') || '{}');
+
+        function confirmPayment() {
+            const form = document.getElementById('payment-form');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const paymentData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                zip: document.getElementById('zip').value,
+                payment_method: document.querySelector('input[name="payment"]:checked').value,
+                ...bookingDetails
+            };
+
+            // Show loading state
+            const confirmButton = document.querySelector('.confirmpayment');
+            const originalText = confirmButton.textContent;
+            confirmButton.textContent = 'Processing...';
+            confirmButton.disabled = true;
+
+            // Send payment data to server
+            fetch('/confirm-payment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('input[name="csrf_token"]').value
+                },
+                body: JSON.stringify(paymentData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(data => {
+                        throw new Error(data.error || 'Payment failed');
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                if (data.message === 'Payment successful!') {
+                    // Redirect to confirmation page
+                    window.location.href = data.redirect_url;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert(error.message || 'Payment failed. Please try again.');
+                // Reset button state
+                confirmButton.textContent = originalText;
+                confirmButton.disabled = false;
+            });
+        }
+
+        function showTicketPreview(data) {
+            document.getElementById('ticket-movie').textContent = data.movie;
+            document.getElementById('ticket-theater').textContent = data.theater;
+            document.getElementById('ticket-date').textContent = data.date;
+            document.getElementById('ticket-time').textContent = data.time;
+            document.getElementById('ticket-seats').textContent = data.seats.join(', ');
+            document.getElementById('ticket-name').textContent = data.name;
+            document.getElementById('ticket-email').textContent = data.email;
+            document.getElementById('ticket-phone').textContent = data.phone;
+
+            document.getElementById('ticket-preview').style.display = 'block';
+            document.querySelector('.print-button').style.display = 'block';
+        }
+
+        function printTicket() {
+            const printContent = document.getElementById('ticket-preview').innerHTML;
+            const originalContent = document.body.innerHTML;
+
+            document.body.innerHTML = printContent;
+            window.print();
+            document.body.innerHTML = originalContent;
+        }
+    </script>
+</body>
+
+</html>

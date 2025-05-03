@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/booking.css') }}">
+    <title>Booking Details</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Select Booking Details</h1>
+        <form id="booking-form">
+            <!-- Movie Title -->
+            <label for="movie-title">Movie:</label>
+<input type="text" id="movie-title" readonly>
+
+            <!-- Theater Dropdown -->
+            <label for="theater-select">Select Theater:</label>
+            <select id="theater-select" required>
+                <option value="">-- Select a Theater --</option>
+            </select>
+
+            <!-- Date Picker -->
+            <label for="date-picker">Select Date:</label>
+            <input type="date" id="date-picker" required>
+
+            <!-- Time Slot Selection -->
+            <label for="time-slot">Select Time:</label>
+            <select id="time-slot" required>
+                <option value="">-- Select a Time Slot --</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="02:00 PM">02:00 PM</option>
+                <option value="06:00 PM">06:00 PM</option>
+                <option value="09:00 PM">09:00 PM</option>
+            </select>
+
+            <!-- Proceed Button -->
+            <button type="button" onclick="proceedToSeating()">Proceed</button>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='js/mini.js') }}"></script>
+</body>
+</html>

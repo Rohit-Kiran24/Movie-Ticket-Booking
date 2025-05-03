@@ -1,0 +1,102 @@
+[
+    {
+        "name": "Asian Cinemas Mcube Mall",
+        "address": "1st Floor, म्चुबे मॉल, Inner Ring Rd, near Pillar Number 118, Somi Reddy Nagar, Hyderabad, Telangana 500064, India",
+        "country": "India",
+        "state": "Telangana",
+        "city": "Hyderabad",
+        "star_count": 4.1,
+        "rating_count": 17609,
+        "zip": 500064
+    },
+    {
+        "name": "VR Movie Theatre | Cymax I GVK",
+        "address": "Gvk One Mall, Rd Number 1, Balapur Basthi, Banjara Hills, Hyderabad, Telangana 500034, India",
+        "country": "India",
+        "state": "Telangana",
+        "city": "Hyderabad",
+        "star_count": 4.8,
+        "rating_count": 1028,
+        "zip": 500034
+    },
+    {
+        "name": "Prasads Multiplex",
+        "address": "IMAX Road, NTR Marg, behind of, Khairtabad, Hyderabad, Telangana 500063, India",
+        "country": "India",
+        "state": "Telangana",
+        "city": "Hyderabad",
+        "star_count": 4.3,
+        "rating_count": 119438,
+        "zip": 500063
+    },
+    {
+        "name": "Asian Radhika Multiplex",
+        "address": "Dr. AS Rao Nagar Rd, ECIL, Kapra, Secunderabad, Telangana 500062, India",
+        "country": "India",
+        "state": "Telangana",
+        "city": "Hyderabad",
+        "star_count": 4.1,
+        "rating_count": 31911,
+        "zip": 500062
+    },
+    {
+        "name": "MAGNUM - Premium home theatre",
+        "address": "Ground floor, pavan mohan arcade, apartments, opposite Fort View, Madhavi Nagar, Hyderabad Shah Guda, Hyderabad, Bandlaguda Jagir, Telangana 500091, India",
+        "country": "India",
+        "state": "Telangana",
+        "city": "Hyderabad",
+        "star_count": 4.9,
+        "rating_count": 40,
+        "zip": 500091
+    },
+    {
+        "name": "Open Air Theatre",
+        "address": "CC86+34J, Filmnagar Club, Film Nagar, Hyderabad, Telangana 500096, India",
+        "country": "India",
+        "state": "Telangana",
+        "city": "Hyderabad",
+        "star_count": 4.4,
+        "rating_count": 36,
+        "zip": 500096
+    },
+    {
+        "name": "GPR Multiplex",
+        "address": "SBR Pride, Kukatpally, Nizampet Rd, Jai Bharat Nagar, Nagarjuna Homes, Kukatpally, Hyderabad, Telangana 500072, India",
+        "country": "India",
+        "state": "Telangana",
+        "city": "Hyderabad",
+        "star_count": 4,
+        "rating_count": 29677,
+        "zip": 500072
+    },
+    {
+        "name": "Asian Laxmikala Shashikala Cinepride",
+        "address": "Bus Stop, Street Number 4, near Moosapet, SP Nagar, Bharat Nagar, Moosapet, Hyderabad, Telangana 500018, India",
+        "country": "India",
+        "state": "Telangana",
+        "city": "Hyderabad",
+        "star_count": 3.6,
+        "rating_count": 47184,
+        "zip": 500018
+    },
+    {
+        "name": "SHIVA Theatre (private)",
+        "address": "CCGF+J9V, Park View Enclave, Jubilee Hills, Hyderabad, Telangana 500033, India",
+        "country": "India",
+        "state": "Telangana",
+        "city": "Hyderabad",
+        "star_count": 4.4,
+        "rating_count": 5,
+        "zip": 500033
+    },
+    {
+        "name": "Rudragiri Cinema",
+        "address": "Anand Nagar, Bandlaguda, Nagole, Hyderabad, Telangana 500068, India",
+        "country": "India",
+        "state": "Telangana",
+        "city": "Hyderabad",
+        "star_count": 0,
+        "rating_count": 0,
+        "zip": 500068
+    }
+]

@@ -1,0 +1,331 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #000000;
+    color: white;
+    padding: 15px 10%;
+    perspective: 1000px;
+    text-align: left;           
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1 {
+    margin: 0;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: right;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+header nav .dropdown {
+    position: relative;
+}
+
+header nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #585454;
+    box-shadow: 0px 8px 16px rgba(172, 164, 164, 0.2);
+    min-width: 160px;
+    z-index: 1;
+    border-radius: 20px;
+}
+
+header nav .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+header nav .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+header nav .dropdown-content a:hover {
+    background-color: #0a0a0a;
+    display: flex;
+}
+
+/* Image Slider */
+.image-slider {
+    position: relative;
+    overflow: hidden;
+    margin: 35px 0;
+}
+
+.slider-container {
+    display: flex;
+    animation: slide 15s infinite linear;
+}
+
+.slider-image {
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    33% { transform: translateX(-100%); }
+    66% { transform: translateX(-200%); }
+    100% { transform: translateX(0); }
+}
+
+/* Latest Movies Section */
+.latest-movies {
+    padding: 30px;
+    background-color: #fff;
+}
+
+.latest-movies h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+/* Movie Cards Grid */
+.movie-slider {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cards in each row */
+    gap: 30px; /* Increased gap between rows and columns */
+    padding: 20px;
+}
+
+/* Movie Cards Styles */
+.movie-card {
+    position: relative;
+    width: 100%;
+    height: 600px; /* Increased height for movie cards */
+    border-radius: 0px; /* Sharp edges by default */
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.movie-card img {
+    width: 100%;
+    height: 100%; /* Set the image to cover the entire card */
+    object-fit: cover;
+}
+
+.movie-title {
+    position: absolute;
+    top: 10px; /* Positioning title at the top left */
+    left: 10px;
+    font-size: 22px; /* Bigger font size */
+    font-weight: bold; /* Make title bold */
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly dark background behind title for readability */
+    padding: 5px 10px; /* Padding around the title */
+    border-radius: 5px; /* Optional: Round the title box */
+}
+
+/* Hover Effects */
+.movie-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 20px; /* Round the edges on hover */
+}
+
+.movie-card:hover .movie-title {
+    font-size: 24px; /* Increase title size slightly on hover */
+}
+
+/* Modal Styles for Movie Detail */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 80%;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin: 0;
+}
+
+.modal-content img {
+    max-width: 100%;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+.modal-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    font-size: 30px;
+    color: #ffffff;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
+}
+
+/* Seat Selection */
+#seats-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 10px;
+    margin-top: 20px;
+}
+
+.seat {
+    width: 30px;
+    height: 30px;
+    background-color: #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.seat.selected {
+    background-color: #28a745;
+}
+
+.seat.booked {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.seat:hover:not(.booked) {
+    background-color: #b3d7ff;
+}
+
+@media screen and (max-width: 768px) {
+    .movie-slider {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row on small screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .movie-slider {
+        grid-template-columns: 1fr; /* 1 card per row on very small screens */
+    }
+}
+
+/* Add this CSS rule to enable smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Apply flexbox to align logo and title side by side */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+#movie-search {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: #333;
+    color: white;
+    font-size: 16px;
+    width: 200px;
+    transition: width 0.3s ease;
+}
+
+#movie-search:focus {
+    width: 300px;
+    outline: none;
+}
+
+/* Search Button Styles */
+header nav ul li button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+    header nav ul li a {
+        font-size: 16px;
+    }
+    
+    .search-box {
+        width: 150px;
+    }
+}
+
+/* Styling for the search input box */
+.search-box {
+    margin-left: 10px;  /* Add some space between the "Search" button and the input box */
+    padding: 5px;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    font-size: 16px;
+    background-color: #333;
+    color: white;
+    display: inline-block;  /* Initially hidden, will be shown dynamically */
+    width: 200px;  /* Adjust width as per your design */
+    transition: all 0.3s ease-in-out;
+}

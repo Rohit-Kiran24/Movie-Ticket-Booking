@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Booking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mini.css') }}">
+</head>
+<body>
+    <div class="main-content">
+        <header>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='image/logo.jpg') }}" alt="logo">
+                <h1>Movie Ticket Booking</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="#latest-movies">Movies</a></li>
+                    <li>
+                        <a href="javascript:void(0);" onclick="toggleSearch()">Search</a>
+                        <input type="text" id="movie-search" class="search-box" placeholder="Search for a movie" style="display: none;">
+                    </li>
+                    <li><a href="#footer">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#">Account</a>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('signin') }}">Sign In</a>
+                            <a href="{{ url_for('signout') }}">Sign Out</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="image-slider">
+            <div class="slider-container">
+                <img class="slider-image" src="/static/image/str.webp"  alt="Movie 1" onclick="showMovieDetails('Movie 1')">
+                <img class="slider-image" src="/static/image/scrl2.jpg" alt="Movie 2" onclick="showMovieDetails('movie9')" >
+                <img class="slider-image" src="/static/image/scr3.jpeg" alt="Movie 3" onclick="showMovieDetails('movie12')">
+            </div>
+        </section>
+       
+        <section class="latest-movies" id="latest-movies">
+            <h2>Latest Movies</h2>
+            <div class="movie-slider">
+                <div class="movie-card" id="movie1" onclick="showMovieDetails('movie1')">
+                    <img src="{{ url_for('static', filename='image/guntur.jpg') }}" alt="Movie 1">
+                    <div class="movie-title">Guntur Kaaram</div>
+                </div>
+                <div class="movie-card" id="movie2" onclick="showMovieDetails('movie2')">
+                    <img src="{{ url_for('static', filename='image/daku.jpg') }}" alt="Movie 2">
+                    <div class="movie-title">Daku Maharaj</div>
+                </div>
+                <div class="movie-card" id="movie3" onclick="showMovieDetails('movie3')">
+                    <img src="{{ url_for('static', filename='image/MV5BZWEwNmYwYTAtMmQxYS00ZTgwLWE0NmUtNGIwZDEyZmYwN2EwXkEyXkFqcGc@._V1_QL75_UX480_.jpg') }}" alt="Movie 3">
+                    <div class="movie-title">Devara</div>
+                </div>
+                <div class="movie-card" id="movie4" onclick="showMovieDetails('movie4')">
+                    <img src="{{ url_for('static', filename='image/sal.jpg') }}" alt="Movie 4">
+                    <div class="movie-title">Salaar</div>
+                </div>
+                <div class="movie-card" id="movie5" onclick="showMovieDetails('movie5')">
+                    <img src="{{ url_for('static', filename='image/MV5BMDI2N2M5ZjQtNDM2Yi00NjRlLThjOWEtZTI0NjJkOTdkN2ZlXkEyXkFqcGc@._V1_.jpg') }}" alt="Movie 5">
+                    <div class="movie-title">OG</div>
+                </div>
+                <div class="movie-card" id="movie6" onclick="showMovieDetails('movie6')">
+                    <img src="{{ url_for('static', filename='image/115989021.webp') }}" alt="Movie 6">
+                    <div class="movie-title">Pushpa 2</div>
+                </div>
+                <div class="movie-card" id="movie7" onclick="showMovieDetails('movie7')">
+                    <img src="{{ url_for('static', filename='image/kgf-chapter-2-photos-hd-011-819x1024.jpg') }}" alt="Movie 7">
+                    <div class="movie-title">KGF 2</div>
+                </div>
+                <div class="movie-card" id="movie8" onclick="showMovieDetails('movie8')">
+                    <img src="{{ url_for('static', filename='image/71Lj90QiDOL._AC_UF1000,1000_QL80_.jpg') }}" alt="Movie 8">
+                    <div class="movie-title">Lion King</div>
+                </div>
+                <div class="movie-card" id="movie9" onclick="showMovieDetails('movie9')">
+                    <img src="{{ url_for('static', filename='image/avengers-infinity-war-hd-superheroes-s7k1afnrbbfqa2un.jpg') }}" alt="Movie 9">
+                    <div class="movie-title">EndGame</div>
+                </div>
+                <div class="movie-card" id="movie10" onclick="showMovieDetails('movie10')">
+                    <img src="{{ url_for('static', filename='image/ven.jpg') }}" alt="Movie 10">  
+                    <div class="movie-title">Venom</div>
+                </div>
+                <div class="movie-card" id="movie11" onclick="showMovieDetails('movie11')">
+                    <img src="{{ url_for('static', filename='image/wp12552507.jpg') }}" alt="Movie 11">
+                    <div class="movie-title">Oppenheimer</div>
+                </div>
+                <div class="movie-card" id="movie12" onclick="showMovieDetails('movie12')">
+                    <img src="{{ url_for('static', filename='image/aataer.jpeg') }}" alt="Movie 12">
+                    <div class="movie-title">Avatar 2</div>
+                </div>
+                <div class="movie-card" id="movie13" onclick="showMovieDetails('movie13')">
+                    <img src="{{ url_for('static', filename='image/wamiqa-070125-2.jpg') }}" alt="Movie 13">
+                    <div class="movie-title">Goodachari 2</div>
+                </div>
+                <div class="movie-card" id="movie14" onclick="showMovieDetails('movie14')">
+                    <img src="{{ url_for('static', filename='image/ha.jpg') }}" alt="Movie 14">
+                    <div class="movie-title">Hari Hara Veera Mallu</div>
+                </div>
+                <div class="movie-card" id="movie15" onclick="showMovieDetails('movie15')">
+                    <img src="{{ url_for('static', filename='image/marco.jpg') }}" alt="Movie 15">
+                    <div class="movie-title">Marco</div>
+                </div>
+                <div class="movie-card" id="movie16" onclick="showMovieDetails('movie16')">
+                    <img src="{{ url_for('static', filename='image/cooli.jpg') }}" alt="Movie 16">
+                    <div class="movie-title">Coolie</div>
+                </div>
+            </div>
+        </section>
+
+        <div id="movie-detail-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeMovieDetails()">&times;</span>
+                <h2 id="movie-detail-title">Movie Title</h2>
+                <img id="movie-detail-poster" src="movie1.jpg" alt="Movie Poster">
+                <p id="movie-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <h3>Cast:</h3>
+                <p id="movie-cast">Actor 1, Actor 2, Actor 3</p>
+                <button id="book-now-btn">Book Now</button>
+            </div>
+        </div>
+
+        <div id="booking-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeBookingPage()">&times;</span>
+                <h2>Book Tickets for <span id="movie-title"></span></h2>
+                <label for="showtime">Select Showtime:</label>
+                <select id="showtime">
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="3:00 PM">3:00 PM</option>
+                    <option value="6:00 PM">6:00 PM</option>
+                    <option value="9:00 PM">9:00 PM</option>
+                </select>
+                <h3>Select Seats:</h3>
+                <div id="seats-container"></div>
+                <button onclick="showBookingPage('${movieTitle}')">Book Now</button>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <p>&copy; 2025 Movie Ticket Booking</p>
+    </footer>
+ 
+    <script src="{{ url_for('static', filename='js/mini.js') }}"></script>
+</body>
+</html>
